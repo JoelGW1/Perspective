@@ -1,37 +1,43 @@
-const ageEl = document.getElementById("age");
-const lifeExpectancyEl = document.getElementById("lifeExpectancy");
+const  tapBD = document.getElementById('tapBD');
+const bd = document.getElementById('bd');
+const  bdWindow = document.getElementById('bdWindow');
+const  window2 = document.getElementById('window2');
 
-function life() {
-    const lifeExpectancy = Number(document.getElementById("lifeExpectancy").value) * 52;
-    const age = Number(document.getElementById("age").value) * 52;;
-    const weeks = document.getElementById("weeks");
+window2.style.display = 'none';
 
-    weeks.innerHTML = '';
-    if (isNaN(lifeExpectancy) || isNaN(age)) {
-        weeks.innerHTML = 'Your life expectancy and current age must be in years.';
-    }else if (age > lifeExpectancy) {
-        weeks.innerHTML = 'Your current age cannot exceed your life expectancy.';
-    }else if ((lifeExpectancy <= 0) || (age < 0) || (age == lifeExpectancy)){
-        weeks.innerHTML = 'You are dead.';
-    }else if (lifeExpectancy/52 > 149){
-        weeks.innerHTML = "Life expectancy can't be over 150 years yet.";
-    }else {
-        for (let i = 0; i < age; i++) {  //we start with 1 week by default
-            weeks.insertAdjacentHTML('beforeEnd','<div id="weekF"></div>')
-        }
-    
-        for (let i = 0; i < lifeExpectancy-age; i++) {  //we start with 1 week by default
-            weeks.insertAdjacentHTML('beforeEnd','<div id="weekE"></div>')
-        }
+let weeksLived;
+
+function reset() {
+    bd.value = 'yyyy-mm-dd';
+}
+
+function hide() {
+    if (bd.value.length != 0) {
+        let dateObj = new Date(bd.value);
+        weeksLived = Math.trunc((new Date() - dateObj.getTime())/604800000);
+        bdWindow.style.display = 'none';
+        viewWeeks();
     }
 }
 
-lifeExpectancyEl.addEventListener("change", () => {
-    life();
-})
+function viewWeeks() {
+    window2.style.display = 'flex';
+    const squaresPast = document.getElementById('squaresPast');
+    const squaresLive = document.getElementById('squaresLive');
 
-ageEl.addEventListener("change", () => {
-    life();
-})
+    for (let i = 0; i < weeksLived; i++) {
+        setTimeout(addPast,.6*i);
+    }
+    
+    for (let i = 0; i < 4160 - weeksLived; i++) {
+        setTimeout(addLive,.6*i);
+    }
+}
 
-life();
+function addPast() {
+    squaresPast.insertAdjacentHTML('beforeend',`<div class="darkSquare"></div>`);
+}
+
+function addLive() {
+    squaresLive.insertAdjacentHTML('beforeend',`<div class="lightSquare"></div>`);
+}
