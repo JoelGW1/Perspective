@@ -3,32 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perspective</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"> 
+    <title>Document</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<body>
-<div id="canvas">
-<div id="bio">
-    <div id="tab">Your Weeks Left To Live</div>
+<body onload="reset()">
+
+<div class="window1" id="bdWindow">
+    <p>Enter your birthdate:</p>
+    <input type="date" id="bd" min="1920-01-01" max="2020-01-01">
+    <div class="tap" onclick="hide()" id="tapBD">Tap to continue</div>
+</div>
+
+<div id="window2">
     <div>
-        <label>Current Age:</label>
-        <input class="fillIn" max="150" value="30" id="age">
-        <label>years</label>
+        <p>The weeks you've lived...</p>
+        <div id="squaresPast"></div>
     </div>
     <div>
-        <label>Life Expectancy:</label>
-        <input class="fillIn" max="150" value="80" id="lifeExpectancy">
-        <label>years</label>
+        <p>The weeks you have left if you live until 80 years...</p>
+        <div id="squaresLive"></div>
     </div>
 </div>
 
-<div id="weeks"></div>
-
-</div>
-<script src="index.js"></script>
 </body>
+<script src="index.js"></script>
 </html>
