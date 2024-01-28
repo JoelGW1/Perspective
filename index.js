@@ -101,6 +101,7 @@ function start() {
 }
 
 function animate2() {
+    if (isNaN(age) != false && age >=0 && age<=80){
     document.getElementById("one").innerHTML = ``;
     age = Number(document.getElementById("age").value);
     start();
@@ -129,6 +130,7 @@ function animate2() {
         if (age == 80) {setTimeout(function() {location.reload()},1500)}
         age++;
         }, i*200)};}, 2500);
+    }
 }
 
 function toTop() {
