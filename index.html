@@ -3,28 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Life in Stars</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<body onload="reset()">
-
-<div class="window1" id="bdWindow">
-    <p>Enter your birthdate:</p>
-    <input type="date" id="bd" min="1920-01-01" max="2020-01-01">
-    <div class="tap" onclick="hide()" id="tapBD">Tap to continue</div>
-</div>
-
-<div id="window2">
-    <div>
-        <p>The weeks you've lived...</p>
-        <div id="squaresPast"></div>
-    </div>
-    <div>
-        <p>The weeks you have left if you live until 80 years...</p>
-        <div id="squaresLive"></div>
-    </div>
-</div>
-
+<body id="body" onload="drawSky(80),toTop()">
+        <div id="stars"></div>
+        <div id="container">
+            <section id="one"><h1>Each star is a week in an 80 year life</h1><h1 id="play" onclick="play()">scroll</h1></section>
+            <section id="two"><h1>Enter your age:</h1><input id="age" type="text" placeholder="#" onchange="animate2()"></section>
+        </div>
+    <script src="index.js"></script> 
 </body>
-<script src="index.js"></script>
 </html>
