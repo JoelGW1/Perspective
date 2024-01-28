@@ -101,7 +101,7 @@ function start() {
 }
 
 function animate2() {
-    if (isNaN(age) != false && age >=0 && age<=80){
+    if (age >=0 && age<=80){
     document.getElementById("one").innerHTML = ``;
     age = Number(document.getElementById("age").value);
     start();
