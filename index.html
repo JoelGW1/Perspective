@@ -3,15 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life in Stars</title>
+    <title>Perspective</title>
+
     <link rel="stylesheet" href="index.css">
 </head>
-<body id="body" onload="drawSky(80),toTop()">
-        <div id="stars"></div>
+<body onload="showCard('one')">
+    <div id="master">
+        <div id="sky"></div>
         <div id="container">
-            <section id="one"><h1>Each star is a week in an 80 year life</h1><h1 id="play" onclick="play()">scroll</h1></section>
-            <section id="two"><h1>Enter your age:</h1><input id="age" type="text" placeholder="#" onchange="animate2()"></section>
+            <div class="card" id="one"><h1>Each star is a week in an 80 year life.</h1><h2 onclick="showCard('two'); hideCard('one')">click here to continue</h2></div>
+            <div class="card" id="two"><div class="flexLine"><h1>Enter your age: </h1><input id="input" type="text" placeholder="#"></div><h2 onclick="showCard('three'); hideCard('two'); drawCircle()">click here to continue</h2></div>
+            <div class="card" id="three"><h1>These are your remaining weeks.</h1><h2 onclick="showCard('four'); hideCard('three'); color()">click here to continue</h2></div>
+            <div class="card" id="four"><h1 id="useOfTime">Average weeks of <span id="sleep">sleep</span><span id="screen-time">screen-time</span><span id="leisure">leisure</span><span id="other">other</span></h1><h2 onclick="showCard('five'); hideCard('four'); drawLive()">click here to continue</h2></div>
+            <div class="card" id="five"><h1>These are your stars</h1><h2>Don't count the days, make the days count - Muhammad Ali</h2></div>
         </div>
-    <script src="index.js"></script> 
+    </div>
+    <script src="index.js"></script>
 </body>
 </html>
